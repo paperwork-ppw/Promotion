@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAPER WORK โปรโมชั่นสุดพิเศษ |</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <style>
+        /* Google Fonts - Poppins */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            overflow-x: hidden;
+            padding-bottom: 80px; /* สำหรับแท็บด้านล่าง */
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #ff5e00, #ff1e00);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 94, 0, 0.3);
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.05)" points="0,100 100,0 100,100"/></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Promotion Cards */
+        .promotion-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .promotion-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(255, 94, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .promotion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 94, 0, 0.2);
+        }
+        
+        .promotion-header {
+            background: linear-gradient(135deg, #ff5e00, #ff1e00);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .promotion-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .promotion-header .discount-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #fff;
+            color: #ff5e00;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .promotion-body {
+            padding: 1.5rem;
+        }
+        
+        .promotion-body p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .promotion-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .promotion-body li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .promotion-body li::before {
+            content: "•";
+            color: #ff5e00;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Referral Section */
+        .referral-section {
+            display: none;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .referral-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(255, 94, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .referral-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .referral-header h2 {
+            color: #ff5e00;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .referral-header .discount-per-person {
+            display: inline-block;
+            background: #ff5e00;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        .referral-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .referral-step {
+            flex: 0 0 30%;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .referral-step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff5e00, #ff1e00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(255, 94, 0, 0.3);
+        }
+        
+        .referral-step h4 {
+            color: #ff5e00;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Bottom Tabs */
+        .tab-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .tab.active {
+            color: #ff5e00;
+        }
+        
+        .tab.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background: #ff5e00;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .tab i {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Popup Styles */
+        .popup-section {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            z-index: 2000;
+        }
+        
+        .popup-overlay {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .popup-section.active .popup-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .popup-box {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            max-width: 500px;
+            width: 90%;
+            padding: 30px;
+            border-radius: 20px;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .popup-section.active .popup-box {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .popup-box img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .popup-close:hover {
+            color: #ff5e00;
+        }
+        
+        .popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ff5e00;
+        }
+        
+        .popup-content {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Animation Effects */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .promotion-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .referral-step {
+                flex: 0 0 100%;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tab {
+                font-size: 0.9rem;
+                padding: 0.8rem 0;
+            }
+            
+            .tab i {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>โปรโมชั่นสุดพิเศษ</h1>
+        <p>ส่วนลดสูงสุดถึง 50% สำหรับสมาชิกทุกท่าน</p>
+    </div>
+    
+    <!-- Main Content - Promotions -->
+    <div class="main-content" id="promotions-content">
+        <div class="promotion-container">
+            <!-- New Member Promotion -->
+            <div class="promotion-card floating">
+                <div class="promotion-header">
+                    <div class="discount-badge">10% OFF</div>
+                    <h3><i class="fas fa-user-plus"></i> โปรโมชั่นสมาชิกใหม่</h3>
+                </div>
+                <div class="promotion-body">
+                    <p>สมัครสมาชิกครั้งแรก รับโปรโมชั่นลดสูงถึง 10%</p>
+                    <ul>
+                        <li>ต้องไม่เคยเป็นสมาชิกกับทางบริการมาก่อน</li>
+                        <li>ต้องไม่เคยใช้บริการ หรือ เข้ารับบริการใดๆ มาก่อน</li>
+                        <li>หากตรวจสอบพบมากกว่า 1 บัญชี งดรับสิทธิ์ส่วนลดนี้ทันที</li>
+                        <li>เมื่อมีการเปลี่ยนแปลงโปรโมชั่น โดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Student Promotion -->
+            <div class="promotion-card floating" style="animation-delay: 0.5s;">
+                <div class="promotion-header">
+                    <div class="discount-badge">20% OFF</div>
+                    <h3><i class="fas fa-graduation-cap"></i> นักเรียน นักศึกษา</h3>
+                </div>
+                <div class="promotion-body">
+                    <p>สมัครสมาชิกครั้งแรก พร้อมแนบบัตร นักเรียน หรือ นักศึกษาเท่านั้น</p>
+                    <ul>
+                        <li>ต้องเป็นนักเรียน หรือนักศึกษา ที่กำลังศึกษาแล้วเท่านั้น</li>
+                        <li>ต้องไม่เคยเป็นสมาชิกกับทางบริการมาก่อน</li>
+                        <li>ต้องไม่เคยใช้บริการ หรือ เข้ารับบริการใดๆ มาก่อน</li>
+                        <li>หากตรวจสอบพบมากกว่า 1 บัญชี งดรับสิทธิ์ส่วนลดนี้ทันที</li>
+                        <li>เมื่อมีการเปลี่ยนแปลงโปรโมชั่น โดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Existing Member Promotion -->
+            <div class="promotion-card floating" style="animation-delay: 1s;">
+                <div class="promotion-header">
+                    <div class="discount-badge">5% OFF</div>
+                    <h3><i class="fas fa-user-friends"></i> ลูกค้าเก่า</h3>
+                </div>
+                <div class="promotion-body">
+                    <p>สมาชิกเก่า 1 เดือนขึ้นไป รับส่วนลด 5% ทุกบริการ</p>
+                    <ul>
+                        <li>ต้องใช้บริการ 1 บริการขึ้นไป</li>
+                        <li>ต้องเป็นสมาชิกครบ 1 เดือนแล้วเท่านั้น</li>
+                        <li>ไม่สามารถใช้ร่วมกับบริการ แลกเงิน ได้ทุกกรณี</li>
+                        <li>เมื่อมีการเปลี่ยนแปลงโปรโมชั่น โดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Referral Section -->
+    <div class="referral-section" id="referral-content">
+        <div class="referral-card">
+            <div class="referral-header">
+                <h2><i class="fas fa-user-friends"></i> แนะนำเพื่อน</h2>
+                <p>รับส่วนลด 5% ต่อคน เมื่อแนะนำเพื่อนมาใช้บริการ</p>
+                <div class="discount-per-person">5% ต่อคน</div>
+            </div>
+            
+            <div class="referral-steps">
+                <div class="referral-step">
+                    <div class="referral-step-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h4>ขั้นตอนที่ 1</h4>
+                    <p>ส่งลิงค์แนะนำของท่านให้เพื่อน</p>
+                </div>
+                
+                <div class="referral-step">
+                    <div class="referral-step-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h4>ขั้นตอนที่ 2</h4>
+                    <p>เพื่อนแจ้งแอดมิน</p>
+                </div>
+                
+                <div class="referral-step">
+                    <div class="referral-step-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h4>ขั้นตอนที่ 3</h4>
+                    <p>รับส่วนลด 5% ทันที</p>
+                </div>
+            </div>
+            
+            <div class="referral-details">
+                <h3>รายละเอียดโปรโมชั่น</h3>
+                <p>ชวนเพื่อนมาใช้บริการ ลดสูงถึง 50% (สูงสุด 100 บาท)</p>
+                <ul>
+                    <li>ชวนเพื่อนด้วยลิงค์ไลน์ บริการ หรือ Contac Center</li>
+                    <li>เพื่อนที่ติดต่อเข้ามา แจ้งเจ้าหน้าที่ว่า เพื่อนแนะนำมา โดยแจ้งเป็น หมายเลขโทรศัพท์ ผู้แนะนำ</li>
+                    <li>ชวนเพื่อน ได้ไม่เกิน 10 คนต่อ เดือนนั้นๆ</li>
+                    <li>รับส่วนลดสูงสุด 50% แต่ไม่เกิน 100.00 บาท</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Tabs -->
+    <div class="tab-container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('promotions')">
+                <i class="fas fa-percentage"></i>
+                โปรโมชั่น
+            </div>
+            <div class="tab" onclick="showTab('referral')">
+                <i class="fas fa-user-friends"></i>
+                แนะนำเพื่อน
+            </div>
+        </div>
+    </div>
+    
+    <!-- Popup Section -->
+    <div class="popup-section active">
+        <div class="popup-overlay"></div>
+        <div class="popup-box">
+            <span class="popup-close" onclick="closePopup()">
+                <i class="fas fa-times"></i>
+            </span>
+            <img src="https://via.placeholder.com/400x200/ff5e00/ffffff?text=Special+Promotion" alt="โปรโมชั่นพิเศษ">
+            <h2 class="popup-title">โปรโมชั่นพิเศษ!</h2>
+            <div class="popup-content">
+                สมัครสมาชิกวันนี้ รับส่วนลดสูงสุดถึง 50%<br>
+                เริ่มต้นใช้งานได้ทันที ไม่มีค่าธรรมเนียมแรกเข้า
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab Functionality
+        function showTab(tabName) {
+            // Update active tab
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            event.currentTarget.classList.add('active');
+            
+            // Show corresponding content
+            if (tabName === 'promotions') {
+                document.getElementById('promotions-content').style.display = 'block';
+                document.getElementById('referral-content').style.display = 'none';
+            } else if (tabName === 'referral') {
+                document.getElementById('promotions-content').style.display = 'none';
+                document.getElementById('referral-content').style.display = 'block';
+            }
+        }
+        
+        // Popup Functionality
+        function closePopup() {
+            document.querySelector('.popup-section').classList.remove('active');
+        }
+        
+        // Auto-close popup after 10 seconds
+        setTimeout(() => {
+            closePopup();
+        }, 10000);
+        
+        // Show popup when page loads (already active by default)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.popup-section').classList.add('active');
+        });
+        
+        // Floating animation for cards
+        const cards = document.querySelectorAll('.floating');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+    </script>
+</body>
+</html>
